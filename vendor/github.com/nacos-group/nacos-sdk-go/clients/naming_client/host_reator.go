@@ -8,7 +8,6 @@ import (
 	nsema "github.com/toolkits/concurrent/semaphore"
 	"log"
 	"reflect"
-	"strings"
 	"time"
 )
 
@@ -23,11 +22,11 @@ type HostReactor struct {
 	updateCacheWhenEmpty bool
 }
 
-const DefaultUpdateThreadNum = 20
+const Default_Update_Thread_Num = 20
 
 func NewHostReactor(serviceProxy NamingProxy, cacheDir string, updateThreadNum int, notLoadCacheAtStart bool, subCallback SubscribeCallback, updateCacheWhenEmpty bool) HostReactor {
 	if updateThreadNum <= 0 {
-		updateThreadNum = DefaultUpdateThreadNum
+		updateThreadNum = Default_Update_Thread_Num
 	}
 	hr := HostReactor{
 		serviceProxy:         serviceProxy,
@@ -98,44 +97,6 @@ func (hr *HostReactor) GetServiceInfo(serviceName string, clusters string) model
 	return newService.(model.Service)
 }
 
-func (hr *HostReactor) GetServiceInfos(serviceNames []string, clusterMap map[string]string, findBack bool) []model.Service {
-
-	serviceInfos := make([]model.Service, 1)
-
-	found := false
-
-	queryWork := func() {
-		for i := 0; i < len(serviceNames); i++ {
-			serviceName := serviceNames[i]
-			clusters, isExist := clusterMap[serviceName]
-			if !isExist {
-				clusters = ""
-			}
-			key := utils.GetServiceCacheKey(serviceName, clusters)
-			cacheService, ok := hr.serviceInfoMap.Get(key)
-			if !ok {
-				continue
-			}
-			found = true
-			cacheService = model.Service{Name: serviceName, Clusters: clusters}
-			hr.serviceInfoMap.Set(key, cacheService)
-			serviceInfos = append(serviceInfos, cacheService.(model.Service))
-			if findBack {
-				return
-			}
-		}
-	}
-
-	queryWork()
-
-	if !found {
-		hr.updateServicesNow(serviceNames, clusterMap, findBack)
-		queryWork()
-	}
-
-	return serviceInfos
-}
-
 func (hr *HostReactor) GetAllServiceInfo(nameSpace string, groupName string, clusters string) []model.Service {
 	result, err := hr.serviceProxy.GetAllServiceInfoList(nameSpace, groupName, clusters)
 	if err != nil {
@@ -167,26 +128,6 @@ func (hr *HostReactor) updateServiceNow(serviceName string, clusters string) {
 		return
 	}
 	hr.ProcessServiceJson(result)
-}
-
-func (hr *HostReactor) updateServicesNow(serviceNames []string, clusters map[string]string, findBack bool) {
-	names := strings.Join(serviceNames, ",")
-	result, err := hr.serviceProxy.QueryListMultiGroup(names, clusters, hr.pushReceiver.port, false, findBack)
-	if err != nil {
-		log.Printf("[ERROR]:query list return error!servieNames:%s cluster:%s  err:%s \n", names, clusters, err.Error())
-		return
-	}
-	if result == "" {
-		log.Printf("[ERROR]:query list is empty!servieNames:%s cluster:%s \n", names, clusters)
-		return
-	}
-	jsonArray := utils.JsonToObject(result, []string{}).([]string)
-	for i := 0; i < len(jsonArray); i ++ {
-		s := jsonArray[i]
-		if strings.Compare("", s) != 0 {
-			hr.ProcessServiceJson(s)
-		}
-	}
 }
 
 func (hr *HostReactor) asyncUpdateService() {

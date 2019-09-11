@@ -144,22 +144,6 @@ func (sc *NamingClient) SelectInstances(param vo.SelectInstancesParam) ([]model.
 	return sc.selectInstances(service, param.HealthyOnly)
 }
 
-func (sc *NamingClient) SelectInstancesMultiGroup(param vo.SelectInstancesMultiGroupParam, findBack bool) ([]model.Instance, error) {
-	if len(param.GroupNames) == 0 {
-		return nil, errors.New("You must set up the group parameter")
-	}
-	serviceNames := make([]string, len(param.GroupNames))
-	for i := 0; i < len(serviceNames); i ++ {
-		serviceNames[i] = utils.GetGroupName(param.ServiceName, param.GroupNames[i])
-	}
-	clusterMap := make(map[string]string)
-	for i := 0; i < len(param.Clusters); i ++ {
-		clusterMap[serviceNames[i]] = strings.Join(param.Clusters[i], ",")
-	}
-	service := sc.hostReactor.GetServiceInfos(serviceNames, clusterMap, findBack)
-	return sc.selectInstances(service, param.HealthyOnly)
-}
-
 func (sc *NamingClient) selectInstances(service model.Service, healthy bool) ([]model.Instance, error) {
 	if service.Hosts == nil || len(service.Hosts) == 0 {
 		return []model.Instance{}, errors.New("instance list is empty!")

@@ -60,24 +60,19 @@ func IsGzipFile(data []byte) bool {
 }
 
 func JsonToService(result string) *model.Service {
-	service := JsonToObject(result, model.Service{}).(model.Service)
-	if &service == nil || len(service.Hosts) == 0 {
+	var service model.Service
+	err := json.Unmarshal([]byte(result), &service)
+	if err != nil {
+		log.Printf("[ERROR]:failed to unmarshal json string:%s err:%v \n", result, err.Error())
+		return nil
+	}
+	if len(service.Hosts) == 0 {
 		log.Printf("[WARN]:instance list is empty,json string:%s \n", result)
 		return nil
 	}
 	return &service
-}
 
-func JsonToObject(data string, v interface{}) interface{} {
-	var result interface{}
-	err := json.Unmarshal([]byte(data), &result)
-	if err != nil {
-		log.Printf("[ERROR]:failed to unmarshal json string:%s err:%v \n", data, err.Error())
-		return nil
-	}
-	return result
 }
-
 func ToJsonString(object interface{}) string {
 	js, _ := json.Marshal(object)
 	return string(js)

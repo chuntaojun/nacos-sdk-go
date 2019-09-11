@@ -156,19 +156,6 @@ func (proxy *NamingProxy) QueryList(serviceName string, clusters string, udpPort
 	return proxy.nacosServer.ReqApi(api, param, http.MethodGet)
 }
 
-func (proxy *NamingProxy) QueryListMultiGroup(serviceNames string, clusters map[string]string, udpPort int, healthyOnly bool, findBack bool) (string, error) {
-	param := make(map[string]string)
-	param["namespaceId"] = proxy.clientConfig.NamespaceId
-	param["serviceNames"] = serviceNames
-	param["clusters"] = utils.ToJsonString(clusters)
-	param["udpPort"] = strconv.Itoa(udpPort)
-	param["healthyOnly"] = strconv.FormatBool(healthyOnly)
-	param["clientIp"] = utils.LocalIP()
-	param["findBack"] = strconv.FormatBool(findBack)
-	api := constant.SERVICE_PATH + "/list/multiGroup"
-	return proxy.nacosServer.ReqApi(api, param, http.MethodGet)
-}
-
 func (proxy *NamingProxy) GetAllServiceInfoList(namespace string, groupName string, clusters string) (string, error) {
 	param := make(map[string]string)
 	param["namespaceId"] = proxy.clientConfig.NamespaceId

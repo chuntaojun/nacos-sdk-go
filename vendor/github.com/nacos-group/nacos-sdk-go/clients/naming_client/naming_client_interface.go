@@ -27,8 +27,6 @@ type INamingClient interface {
 	SelectAllInstances(param vo.SelectAllInstancesParam) ([]model.Instance, error)
 	// 获取实例列表
 	SelectInstances(param vo.SelectInstancesParam) ([]model.Instance, error)
-	// 获取实例列表
-	SelectInstancesMultiGroup(param vo.SelectInstancesMultiGroupParam, findBack bool) ([]model.Instance, error)
 	//获取一个健康的实例
 	SelectOneHealthyInstance(param vo.SelectOneHealthInstanceParam) (*model.Instance, error)
 	// 服务监听

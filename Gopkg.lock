@@ -2,6 +2,7 @@
 
 
 [[projects]]
+  digest = "1:ba5d654c99c96ff3ab6169c4946a8821161bed627f3cda851ffcde5110fdd0be"
   name = "github.com/aliyun/alibaba-cloud-sdk-go"
   packages = [
     "sdk",
@@ -14,108 +15,192 @@
     "sdk/requests",
     "sdk/responses",
     "sdk/utils",
-    "services/kms"
+    "services/kms",
   ]
+  pruneopts = "UT"
   revision = "e6958b522d6f315a3585561bca1f87f6a41fd0c3"
 
 [[projects]]
   branch = "master"
+  digest = "1:69e7139f6d546cc6ffc9ca98e7f4cfe95be479f4044eb30bb92017b5b87c9d40"
   name = "github.com/buger/jsonparser"
   packages = ["."]
+  pruneopts = "UT"
   revision = "bf1c66bbce23153d89b23f8960071a680dbef54b"
 
 [[projects]]
+  digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
+  pruneopts = "UT"
   revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
   version = "v1.1.1"
 
 [[projects]]
+  digest = "1:aacef5f5e45685f2aeda5534d0a750dee6859de7e9088cdd06192787bb01ae6d"
   name = "github.com/go-errors/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "a6af135bd4e28680facf08a3d206b454abc877a4"
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:be408f349cae090a7c17a279633d6e62b00068e64af66a582cae0983de8890ea"
   name = "github.com/golang/mock"
   packages = ["gomock"]
+  pruneopts = "UT"
   revision = "9fa652df1129bef0e734c9cf9bf6dbae9ef3b9fa"
   version = "1.3.1"
 
 [[projects]]
+  digest = "1:bb81097a5b62634f3e9fec1014657855610c82d19b9a40c17612e32651e35dca"
   name = "github.com/jmespath/go-jmespath"
   packages = ["."]
+  pruneopts = "UT"
   revision = "c2b33e84"
 
 [[projects]]
+  digest = "1:f5a2051c55d05548d2d4fd23d244027b59fbd943217df8aa3b5e170ac2fd6e1b"
   name = "github.com/json-iterator/go"
   packages = ["."]
+  pruneopts = "UT"
   revision = "0ff49de124c6f76f8494e194af75bde0f1a49a29"
   version = "v1.1.6"
 
 [[projects]]
   branch = "master"
+  digest = "1:f7d8e8432e355163397d2da1e17d0fb616d611db1360c43b1ac73e56f87038e2"
   name = "github.com/lestrrat/go-file-rotatelogs"
   packages = ["."]
+  pruneopts = "UT"
   revision = "d3151e2a480fdcd05fb97102f5310a47d96274c4"
 
 [[projects]]
   branch = "master"
+  digest = "1:b9f2e1d7b042e6fdb2aa1e3762afdb99e0c584f66a1a346b03cf8b4be203c694"
   name = "github.com/lestrrat/go-strftime"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ba3bf9c1d0421aa146564a632931730344f1f9f1"
 
 [[projects]]
+  digest = "1:33422d238f147d247752996a26574ac48dcf472976eda7f5134015f06bf16563"
   name = "github.com/modern-go/concurrent"
   packages = ["."]
+  pruneopts = "UT"
   revision = "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
   version = "1.0.3"
 
 [[projects]]
+  digest = "1:e32bdbdb7c377a07a9a46378290059822efdce5c8d96fe71940d87cb4f918855"
   name = "github.com/modern-go/reflect2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "4b7aa43c6742a2c18fdef89dd197aaae7dac7ccd"
   version = "1.0.1"
 
 [[projects]]
+  digest = "1:ead854ec25fe5ddd0bbb209b163ce134dca9459fd76a9ab3e9ed9c5de05c9778"
+  name = "github.com/nacos-group/nacos-sdk-go"
+  packages = [
+    "clients",
+    "clients/cache",
+    "clients/config_client",
+    "clients/nacos_client",
+    "clients/naming_client",
+    "common/constant",
+    "common/http_agent",
+    "common/logger",
+    "common/nacos_error",
+    "common/nacos_server",
+    "common/util",
+    "example",
+    "mock",
+    "model",
+    "utils",
+    "vo",
+  ]
+  pruneopts = "UT"
+  revision = "77b8c7a71231b133e9d28949902a240c9c799607"
+  version = "0.2.0"
+
+[[projects]]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
   name = "github.com/pkg/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
   version = "v0.8.1"
 
 [[projects]]
+  digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
+  pruneopts = "UT"
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:274f67cb6fed9588ea2521ecdac05a6d62a8c51c074c1fccc6a49a40ba80e925"
   name = "github.com/satori/go.uuid"
   packages = ["."]
+  pruneopts = "UT"
   revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
   version = "v1.2.0"
 
 [[projects]]
+  digest = "1:972c2427413d41a1e06ca4897e8528e5a1622894050e2f527b38ddf0f343f759"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
+  pruneopts = "UT"
   revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
   version = "v1.3.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:52b6e05d3bcbf2be47b36431f24669804a8008be40e0bae0288d903054453669"
   name = "github.com/toolkits/concurrent"
   packages = ["semaphore"]
+  pruneopts = "UT"
   revision = "a4371d70e3e308db0d5f90c2b1f5efaa84add725"
 
 [[projects]]
+  digest = "1:00f2a9df72922aa64eae4037597f8fde82ffb86a9734e16b6a59598aa38278f9"
   name = "gopkg.in/ini.v1"
   packages = ["."]
+  pruneopts = "UT"
   revision = "8659100d2d9ecf3760a41838b1886db49426d001"
   version = "v1.44.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5f9193892ff6610740b5d7993fe17737c26a52df0ed97a9ed0d4b662aa71455e"
+  input-imports = [
+    "github.com/aliyun/alibaba-cloud-sdk-go/services/kms",
+    "github.com/buger/jsonparser",
+    "github.com/go-errors/errors",
+    "github.com/golang/mock/gomock",
+    "github.com/lestrrat/go-file-rotatelogs",
+    "github.com/nacos-group/nacos-sdk-go/clients",
+    "github.com/nacos-group/nacos-sdk-go/clients/cache",
+    "github.com/nacos-group/nacos-sdk-go/clients/config_client",
+    "github.com/nacos-group/nacos-sdk-go/clients/nacos_client",
+    "github.com/nacos-group/nacos-sdk-go/clients/naming_client",
+    "github.com/nacos-group/nacos-sdk-go/common/constant",
+    "github.com/nacos-group/nacos-sdk-go/common/http_agent",
+    "github.com/nacos-group/nacos-sdk-go/common/logger",
+    "github.com/nacos-group/nacos-sdk-go/common/nacos_error",
+    "github.com/nacos-group/nacos-sdk-go/common/nacos_server",
+    "github.com/nacos-group/nacos-sdk-go/common/util",
+    "github.com/nacos-group/nacos-sdk-go/example",
+    "github.com/nacos-group/nacos-sdk-go/mock",
+    "github.com/nacos-group/nacos-sdk-go/model",
+    "github.com/nacos-group/nacos-sdk-go/utils",
+    "github.com/nacos-group/nacos-sdk-go/vo",
+    "github.com/pkg/errors",
+    "github.com/satori/go.uuid",
+    "github.com/stretchr/testify/assert",
+    "github.com/toolkits/concurrent/semaphore",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
